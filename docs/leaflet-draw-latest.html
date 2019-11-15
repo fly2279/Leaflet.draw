@@ -2271,6 +2271,18 @@ for this section of the documentation, please edit docs-misc.leafdoc in the buil
 <td><code>false</code></td>
 <td>Determines if the draw tool remains enabled after drawing a shape.</td>
 </tr>
+<tr>
+<td>showArea</td>
+<td>Bool</td>
+<td><code>false</code></td>
+<td>Show the area of the drawn rectangle in m², ha or km². <strong>The area is only approximate and become less accurate the larger the rectangle is.</strong></td>
+</tr>
+<tr>
+<td>precision</td>
+<td>Object</td>
+<td><code>{km: 2, ha: 2, m: 0, mi: 2, ac: 2, yd: 0, ft: 0, nm: 2}</code></td>
+<td>Defines the precision to use for numbers of each type of unit. Possible units are <code>km</code> (kilometers), <code>ha</code> (hectares), <code>m</code> (metres), <code>mi</code> (miles), <code>ac</code> (acres), <code>ya</code> (yards), <code>ft</code> (feet), <code>nm</code> (nautical miles). For example <code>{km: 1}</code> changes the default precision for km and km² to one which gives values like <code>1.5 km</code> and <code>15.0 km²</code> in stead of <code>1.53 km</code> and <code>15.01 km²</code>.</td>
+</tr>
 </tbody>
 </table>
 
@@ -2300,7 +2312,19 @@ for this section of the documentation, please edit docs-misc.leafdoc in the buil
 <td>showRadius</td>
 <td>Bool</td>
 <td><code>true</code></td>
-<td>Show the area of the drawn circle in m², ha or km². <strong>The area is only approximate and become less accurate the larger the circle is.</strong></td>
+<td>Show the radius of the drawn circle. <strong>The radius is only approximate and become less accurate the larger the circle is.</strong></td></td>
+</tr>
+<tr>
+<td>showArea</td>
+<td>Bool</td>
+<td><code>false</code></td>
+<td>Show the area of the drawn circle in m², ha or km². <strong>The area is only approximate and become less accurate the larger the polygon is.</strong></td>
+</tr>
+<tr>
+<td>precision</td>
+<td>Object</td>
+<td><code>{km: 2, ha: 2, m: 0, mi: 2, ac: 2, yd: 0, ft: 0, nm: 2}</code></td>
+<td>Defines the precision to use for numbers of each type of unit. Possible units are <code>km</code> (kilometers), <code>ha</code> (hectares), <code>m</code> (metres), <code>mi</code> (miles), <code>ac</code> (acres), <code>ya</code> (yards), <code>ft</code> (feet), <code>nm</code> (nautical miles). For example <code>{km: 1}</code> changes the default precision for km and km² to one which gives values like <code>1.5 km</code> and <code>15.0 km²</code> in stead of <code>1.53 km</code> and <code>15.01 km²</code>.</td>
 </tr>
 </tbody>
 </table>

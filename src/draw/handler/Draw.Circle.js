@@ -19,8 +19,10 @@ L.Draw.Circle = L.Draw.SimpleShape.extend({
 			fillOpacity: 0.2,
 			clickable: true
 		},
-		showRadius: true,
+		showRadius: true, //Whether to show the radius in the tooltip
+		showArea: false, //Whether to show the area in the tooltip
 		metric: true, // Whether to use the metric measurement system or imperial
+		precision: {}, // How precise to round the area
 		feet: true, // When not metric, use feet instead of yards for display
 		nautic: false // When not metric, not feet use nautic mile for display
 	},
@@ -59,8 +61,10 @@ L.Draw.Circle = L.Draw.SimpleShape.extend({
 	_onMouseMove: function (e) {
 		var latlng = e.latlng,
 			showRadius = this.options.showRadius,
+			showArea = this.options.showArea,
 			useMetric = this.options.metric,
-			radius;
+			radius,
+			area;
 
 		this._tooltip.updatePosition(latlng);
 		if (this._isDrawing) {
@@ -69,11 +73,21 @@ L.Draw.Circle = L.Draw.SimpleShape.extend({
 			// Get the new radius (rounded to 1 dp)
 			radius = this._shape.getRadius().toFixed(1);
 
-			var subtext = '';
+			// Get the area of the circle
+			area = Math.PI * (radius * radius);
+
+			var subtext = [''];
 			if (showRadius) {
-				subtext = L.drawLocal.draw.handlers.circle.radius + ': ' +
-					L.GeometryUtil.readableDistance(radius, useMetric, this.options.feet, this.options.nautic);
+				subtext.push(L.drawLocal.draw.handlers.circle.radius + ': ' +
+					L.GeometryUtil.readableDistance(radius, useMetric, this.options.feet, this.options.nautic)
+				);
 			}
+			if (showArea) {
+				subtext.push(L.drawLocal.draw.handlers.circle.area + ': ' +
+					L.GeometryUtil.readableArea(area, useMetric, this.options.precision)
+				);
+			}
+			subtext = subtext.join(' ').trim();
 			this._tooltip.updateContent({
 				text: this._endLabelText,
 				subtext: subtext

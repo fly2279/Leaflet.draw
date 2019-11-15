@@ -1,7 +1,7 @@
 /**
  * Leaflet.draw assumes that you have already included the Leaflet library.
  */
-L.drawVersion = '0.4.2';
+L.drawVersion = '0.4.3';
 /**
  * @class L.Draw
  * @aka Draw
@@ -110,7 +110,8 @@ L.drawLocal = {
 				tooltip: {
 					start: 'Click and drag to draw circle.'
 				},
-				radius: 'Radius'
+				radius: 'Radius',
+				area: 'Area'
 			},
 			circlemarker: {
 				tooltip: {

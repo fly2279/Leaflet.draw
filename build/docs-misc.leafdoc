@@ -79,8 +79,10 @@ for this section of the documentation, please edit docs-misc.leafdoc in the buil
 
 | Option | Type | Default | Description
 | --- | --- | --- | ---
+| showArea | Bool | `false` | Show the area of the drawn rectangle in m², ha or km². **The area is only approximate and become less accurate the larger the rectangle is.**
 | shapeOptions | [Leaflet Path options](http://leafletjs.com/reference.html#path-options) | [See code](https://github.com/Leaflet/Leaflet.draw/blob/master/src/draw/handler/Draw.Rectangle.js#L7) | The options used when drawing the rectangle on the map.
 | repeatMode | Bool | `false` | Determines if the draw tool remains enabled after drawing a shape.
+| precision | Object | `{km: 2, ha: 2, m: 0, mi: 2, ac: 2, yd: 0, ft: 0, nm: 2}` | Defines the precision to use for numbers of each type of unit. Possible units are `km` (kilometers), `ha` (hectares), `m` (metres), `mi` (miles), `ac` (acres), `ya` (yards), `ft` (feet), `nm` (nautical miles). For example `{km: 1}` changes the default precision for km and km² to one which gives values like `1.5 km` and `15.0 km²` in stead of `1.53 km` and `15.01 km²`.
 
 @namespace CircleOptions
 
@@ -88,7 +90,9 @@ for this section of the documentation, please edit docs-misc.leafdoc in the buil
 | --- | --- | --- | ---
 | shapeOptions | [Leaflet Path options](http://leafletjs.com/reference.html#path-options) | [See code](https://github.com/Leaflet/Leaflet.draw/blob/master/src/draw/handler/Draw.Circle.js#L7) | The options used when drawing the circle on the map.
 | repeatMode | Bool | `false` | Determines if the draw tool remains enabled after drawing a shape.
-| showRadius | Bool | `true` | Show the area of the drawn circle in m², ha or km². **The area is only approximate and become less accurate the larger the circle is.**
+| showRadius | Bool | `true` | Show the radius of the drawn circle in m², ha or km². **The radius is only approximate and become less accurate the larger the circle is.**
+| showArea | Bool | `false` | Show the area of the drawn circle in m², ha or km². **The area is only approximate and become less accurate the larger the circle is.**
+| precision | Object | `{km: 2, ha: 2, m: 0, mi: 2, ac: 2, yd: 0, ft: 0, nm: 2}` | Defines the precision to use for numbers of each type of unit. Possible units are `km` (kilometers), `ha` (hectares), `m` (metres), `mi` (miles), `ac` (acres), `ya` (yards), `ft` (feet), `nm` (nautical miles). For example `{km: 1}` changes the default precision for km and km² to one which gives values like `1.5 km` and `15.0 km²` in stead of `1.53 km` and `15.01 km²`.
 
 
 @namespace MarkerOptions
