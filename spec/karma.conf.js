@@ -2,11 +2,10 @@
 module.exports = function (config) {
 
 	var libSources = require(__dirname+'/../build/build.js').getFiles();
-	var leafletSources = require(__dirname+'/../node_modules/leaflet/build/build.js').getFiles();
-
-	for (var i=0; i < leafletSources.length; i++) {
-		leafletSources[i] = __dirname+"/../node_modules/leaflet/" + leafletSources[i];
-	}
+	var leafletSources = [
+		"node_modules/leaflet/dist/leaflet.js",
+		"node_modules/leaflet/dist/leaflet.css"
+	];
 
 	var files = [
 		"spec/before.js",
