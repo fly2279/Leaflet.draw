@@ -79,7 +79,7 @@ L.Draw.Circle = L.Draw.SimpleShape.extend({
 			var subtext = [''];
 			if (showRadius) {
 				subtext.push(L.drawLocal.draw.handlers.circle.radius + ': ' +
-					L.GeometryUtil.readableDistance(radius, useMetric, this.options.feet, this.options.nautic)
+					L.GeometryUtil.readableDistance(radius, useMetric, this.options.feet, this.options.nautic, this.options.precision)
 				);
 			}
 			if (showArea) {
