@@ -51,7 +51,7 @@
     var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             osmAttrib = '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib }),
-            map = new L.Map('map', { center: new L.LatLng(51.505, -0.04), zoom: 13 }),
+            map = new L.Map('map', { center: new L.LatLng(37.75938086628598, -100.86040277034046), zoom: 13 }),
             drawnItems = L.featureGroup().addTo(map);
     L.control.layers({
         'osm': osm.addTo(map),
@@ -69,7 +69,21 @@
         draw: {
             polygon: {
                 allowIntersection: false,
-                showArea: true
+                showArea: true,
+                metric:false,
+                precision:{'ac': 4},
+            },
+            rectangle:{
+                showArea: true,
+                precision:{'ac': 4},
+                metric:false,
+            },
+            circle: {
+                showArea:true,
+                precision:{'ac': 4},
+                metric:false,
+                // showRadius: false,
+
             }
         }
     }));
