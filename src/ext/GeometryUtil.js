@@ -103,7 +103,7 @@
 		// Converts a metric distance to one of [ feet, nauticalMile, metric or yards ] string
 		//
 		// @alternative
-		// @method readableDistance(distance, isMetric, useFeet, isNauticalMile, precision): string
+		// @method readableDistance(distance, isMetric, isFeet, isNauticalMile, precision): string
 		// Converts metric distance to distance string.
 		// The value will be rounded as defined by the precision option object.
 		readableDistance: function (distance, isMetric, isFeet, isNauticalMile, precision) {
