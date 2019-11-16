@@ -22,6 +22,7 @@ L.Draw.Circle = L.Draw.SimpleShape.extend({
 		showRadius: true, //Whether to show the radius in the tooltip
 		showArea: false, //Whether to show the area in the tooltip
 		metric: true, // Whether to use the metric measurement system or imperial
+		imperial: false, // Imperial options for units
 		precision: {}, // How precise to round the area
 		feet: true, // When not metric, use feet instead of yards for display
 		nautic: false // When not metric, not feet use nautic mile for display
@@ -84,7 +85,7 @@ L.Draw.Circle = L.Draw.SimpleShape.extend({
 			}
 			if (showArea) {
 				subtext.push(L.drawLocal.draw.handlers.circle.area + ': ' +
-					L.GeometryUtil.readableArea(area, useMetric, this.options.precision)
+					L.GeometryUtil.readableArea(area, useMetric, this.options.precision, this.options.imperial)
 				);
 			}
 			subtext = subtext.join(' ').trim();

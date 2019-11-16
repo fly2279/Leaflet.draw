@@ -1561,7 +1561,7 @@ Triggered when the user has finished removing shapes (remove mode) and saves.</t
 </td>
 	</tr>
 	<tr id='l-geometryutil-readablearea'>
-		<td><code><b>readableArea</b>(<i>area</i>, <i>isMetric</i>, <i>precision</i>)</nobr></code></td>
+		<td><code><b>readableArea</b>(<i>area</i>, <i>isMetric</i>, <i>precision</i>, <i>imperialUnits</i>)</nobr></code></td>
 		<td><code>string</code></td>
 		<td><p>Returns a readable area string in yards or metric.
 The value will be rounded as defined by the precision option object.</p>
@@ -2229,6 +2229,12 @@ for this section of the documentation, please edit docs-misc.leafdoc in the buil
 <td>Use the metric measurement system. Can be a boolean value, but can also be an array to specify which units to use. Possible units are <code>km</code> (kilometers), <code>ha</code> (hectares), <code>m</code> (metres). So a value of <code>[&#39;km&#39;, &#39;m&#39;]</code> means that the length will be shown in metres and, when more than a 1000 metres, in kilometers, and the area will be shown in m² or km² and acres will not be used.</td>
 </tr>
 <tr>
+<td>imperial</td>
+<td>Object</td>
+<td><code>false</code></td>
+<td>Use the imperial measurement system. The `metric` property must be set to false to affect imperial. Can be a boolean value to automatically switch between imperial units based on the area, but can also be a string to specify a single unit that should be used. Possible units are <code>mi</code> (miles), <code>ac</code> (acres), <code>yd</code> (yards). So a value of <code>ac</code> means that the area will be shown in acres.</td>
+</tr>
+<tr>
 <td>feet</td>
 <td>Bool</td>
 <td><code>true</code></td>
@@ -2272,6 +2278,12 @@ for this section of the documentation, please edit docs-misc.leafdoc in the buil
 <td>Use the metric measurement system. Can be a boolean value, but can also be an array to specify which units to use. Possible units are <code>km</code> (kilometers), <code>ha</code> (hectares), <code>m</code> (metres). So a value of <code>[&#39;km&#39;, &#39;m&#39;]</code> means that the length will be shown in metres and, when more than a 1000 metres, in kilometers, and the area will be shown in m² or km² and acres will not be used.</td>
 </tr>
 <tr>
+<tr>
+<td>imperial</td>
+<td>Object</td>
+<td><code>false</code></td>
+<td>Use the imperial measurement system. The `metric` property must be set to false to affect imperial. Can be a boolean value to automatically switch between imperial units based on the area, but can also be a string to specify a single unit that should be used. Possible units are <code>mi</code> (miles), <code>ac</code> (acres), <code>yd</code> (yards). So a value of <code>ac</code> means that the area will be shown in acres.</td>
+</tr>
 <td>repeatMode</td>
 <td>Bool</td>
 <td><code>false</code></td>
@@ -2332,6 +2344,12 @@ for this section of the documentation, please edit docs-misc.leafdoc in the buil
 <td>Object</td>
 <td><code>true</code></td>
 <td>Use the metric measurement system. Can be a boolean value, but can also be an array to specify which units to use. Possible units are <code>km</code> (kilometers), <code>ha</code> (hectares), <code>m</code> (metres). So a value of <code>[&#39;km&#39;, &#39;m&#39;]</code> means that the length will be shown in metres and, when more than a 1000 metres, in kilometers, and the area will be shown in m² or km² and acres will not be used.</td>
+</tr>
+<tr>
+<td>imperial</td>
+<td>Object</td>
+<td><code>false</code></td>
+<td>Use the imperial measurement system. The `metric` property must be set to false to affect imperial. Can be a boolean value to automatically switch between imperial units based on the area, but can also be a string to specify a single unit that should be used. Possible units are <code>mi</code> (miles), <code>ac</code> (acres), <code>yd</code> (yards). So a value of <code>ac</code> means that the area will be shown in acres.</td>
 </tr>
 <td>precision</td>
 <td>Object</td>

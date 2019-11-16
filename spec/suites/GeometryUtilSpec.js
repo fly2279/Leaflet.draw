@@ -9,6 +9,23 @@ describe("L.GeometryUtil", function () {
 		])).to.eql(1232921098571.292);
 	});
 
+	describe("readableArea", function () {
+		describe("metric", function () {
+			it("returns square meters, hectar acres, or kilometers when the metric unit is not specified", function() {
+				expect(L.GeometryUtil.readableArea(1000, true)).to.eql('1000 m&sup2;');
+				expect(L.GeometryUtil.readableArea(10000, true)).to.eql('1.00 ha');
+				expect(L.GeometryUtil.readableArea(1000000, ['km'])).to.eql('1.00 km&sup2;');
+			});
+			it("returns imperial units when metric is false", function() {
+				expect(L.GeometryUtil.readableArea(2589986.9952, false)).to.eql('1.00 mi&sup2;');
+				expect(L.GeometryUtil.readableArea(4046.85468, false)).to.eql('1.00 acres');
+				expect(L.GeometryUtil.readableArea(0.836127, false)).to.eql('1 yd&sup2;');
+			});
+			it("returns a specific imperial unit when one is specified, regardless of area", function() {
+				expect(L.GeometryUtil.readableArea(4046856.4, false, 2, 'ac')).to.eql('1000.00 acres');
+			});
+		});
+	});
 	describe("readableDistance", function () {
 		describe("metric", function () {
 			it("returns meters or kilometers", function() {

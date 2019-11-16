@@ -27,6 +27,7 @@ L.Draw.Polygon = L.Draw.Polyline.extend({
 		// Also defines the units to use for the metric system as an array of
 		// strings (e.g. `['ha', 'm']`).
 		metric: true,
+		imperial: false,
 		feet: true, // When not metric, to use feet instead of yards for display.
 		nautic: false, // When not metric, not feet use nautic mile for display
 		// Defines the precision for each type of unit (e.g. {km: 2, ft: 0}
@@ -92,7 +93,7 @@ L.Draw.Polygon = L.Draw.Polyline.extend({
 		}
 
 		if (area) {
-			measurementString += '<br>' + L.GeometryUtil.readableArea(area, this.options.metric, this.options.precision);
+			measurementString += '<br>' + L.GeometryUtil.readableArea(area, this.options.metric, this.options.precision, this.options.imperial);
 		}
 
 		return measurementString;

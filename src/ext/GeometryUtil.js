@@ -60,10 +60,10 @@
 			return formatted;
 		},
 
-		// @method readableArea(area, isMetric, precision): string
+		// @method readableArea(area, isMetric, precision, imperialUnits): string
 		// Returns a readable area string in yards or metric.
 		// The value will be rounded as defined by the precision option object.
-		readableArea: function (area, isMetric, precision) {
+		readableArea: function (area, isMetric, precision, imperialUnits) {
 			var areaStr,
 				units,
 				precision = L.Util.extend({}, defaultPrecision, precision);
@@ -78,22 +78,36 @@
 				}
 
 				if (area >= 1000000 && units.indexOf('km') !== -1) {
-					areaStr = L.GeometryUtil.formattedNumber(area * 0.000001, precision['km']) + ' km²';
+					areaStr = L.GeometryUtil.formattedNumber(area * 0.000001, precision['km']) + ' km&sup2;';
 				} else if (area >= 10000 && units.indexOf('ha') !== -1) {
 					areaStr = L.GeometryUtil.formattedNumber(area * 0.0001, precision['ha']) + ' ha';
 				} else {
-					areaStr = L.GeometryUtil.formattedNumber(area, precision['m']) + ' m²';
+					areaStr = L.GeometryUtil.formattedNumber(area, precision['m']) + ' m&sup2;';
 				}
 			} else {
-				area /= 0.836127; // Square yards in 1 meter
-
-				if (area >= 3097600) { //3097600 square yards in 1 square mile
-					areaStr = L.GeometryUtil.formattedNumber(area / 3097600, precision['mi']) + ' mi²';
-				} else if (area >= 4840) { //4840 square yards in 1 acre
-					areaStr = L.GeometryUtil.formattedNumber(area / 4840, precision['ac']) + ' acres';
-				} else {
-					areaStr = L.GeometryUtil.formattedNumber(area, precision['yd']) + ' yd²';
-				}
+				units = typeof imperialUnits == 'string' ? imperialUnits : 'imperial';
+				switch (units) {
+					case 'mi':
+						areaStr = L.GeometryUtil.formattedNumber(area / 2589988.1103, precision['mi']) + ' mi&sup2;';
+						break;
+					case 'ac':
+						areaStr = L.GeometryUtil.formattedNumber(area / 4046.8564, precision['ac']) + ' acres';
+						break;
+					case 'yd':
+						areaStr = L.GeometryUtil.formattedNumber(area/0.836127, precision['yd']) + ' yd&sup2;';
+						break;
+					case 'imperial':
+					default:
+						area /= 0.836127; // Square yards in 1 meter
+						if (area >= 3097600) { //3097600 square yards in 1 square mile
+							areaStr = L.GeometryUtil.formattedNumber(area / 3097600, precision['mi']) + ' mi&sup2;';
+						} else if (area >= 4840) { //4840 square yards in 1 acre
+							areaStr = L.GeometryUtil.formattedNumber(area / 4840, precision['ac']) + ' acres';
+						} else {
+							areaStr = L.GeometryUtil.formattedNumber(area, precision['yd']) + ' yd&sup2;';
+						}
+						break;
+					}
 			}
 
 			return areaStr;
